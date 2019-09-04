@@ -11,23 +11,23 @@ def bl(mcstocks, x, sigma):
 	pfvar = np.matmul(wmarket, np.matmul(sigma, np.transpose(wmarket)))	#portfolio risk
 	lamb = pfmean/pfvar							#risk aversion coefficient to scale implied equilibrium returns
 
-	pi = lamb * np.matmul(sigma,wmarket)			#implied equilibrium returns
+	pi = lamb * np.matmul(sigma,wmarket)					#implied equilibrium returns
 
 
 	#Q - Vektor of Views, in our Case the Fama-French Returns
-	N = x.shape[1]									#N is the number of stocks
-	diff = exp - pi 								#difference between views and implied equilibrium returns
+	N = x.shape[1]								#N is the number of stocks
+	diff = exp - pi 							#difference between views and implied equilibrium returns
 	Q = pi + 0.1 * diff 							#10% of difference is added to pi to gently tilt portfolio, as 
-													#views are usually to "extreme" -> difference to Black Litterman
+										#views are usually to "extreme" -> difference to Black Litterman
 
 
 	#P - Matrix of Assets involved in a View
-	K = N 											#K is the number of views
-	P = np.identity(K)								#each view is an absolute view
+	K = N 									#K is the number of views
+	P = np.identity(K)							#each view is an absolute view
 
 	#Omega - K x K Matrix of the View´s Uncertainity
 	Omega = np.array([])							#implement array to append omegas later on
-	teta = 1										#scales the variance of error terms
+	teta = 1								#scales the variance of error terms
 
 	for i in range(0, K):							#the loop appends the variance of error terms to the array
 		for j in range(0, K):
