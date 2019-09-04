@@ -5,8 +5,8 @@ import D1_data, D2_monthly, C1_blacklitterman, C2_shrinkage, D3_dates
 
 #data
 mcstocks, stockreturns, bondreturns, rf = D1_data.daten()		#daily returns + market cap. weights	
-mreturn = D2_monthly.monthly()									#monthly returns 
-dates = D3_dates.dates()										#dates from 07.31.2014 to 04.29.2019
+mreturn = D2_monthly.monthly()						#monthly returns 
+dates = D3_dates.dates()						#dates from 07.31.2014 to 04.29.2019
 
 #adjusting data set for stockreturns since the first 207 days are used for estimating required Black Litterman inputs
 stockreturns = stockreturns[207:]
