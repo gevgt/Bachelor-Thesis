@@ -5,11 +5,11 @@ def bl(mcstocks, x, sigma):
 	exp = np.mean(x, axis = 0)						#as views, the average of historic returns is used
 
 	#Equilibrium Returns: pi = lamb*sigma*wmarket
-	mcmean = np.mean(mcstocks, axis = 0)			#calculates the average market capitalization weight for each asset
+	mcmean = np.mean(mcstocks, axis = 0)					#calculates the average market capitalization weight for each asset
 	wmarket = mcmean/np.sum(mcmean)
-	pfmean = np.matmul(wmarket, np.transpose(exp))	#portfolio mean -> required for risk aversion coefficient
+	pfmean = np.matmul(wmarket, np.transpose(exp))				#portfolio mean -> required for risk aversion coefficient
 	pfvar = np.matmul(wmarket, np.matmul(sigma, np.transpose(wmarket)))	#portfolio risk
-	lamb = pfmean/pfvar								#risk aversion coefficient to scale implied equilibrium returns
+	lamb = pfmean/pfvar							#risk aversion coefficient to scale implied equilibrium returns
 
 	pi = lamb * np.matmul(sigma,wmarket)			#implied equilibrium returns
 
