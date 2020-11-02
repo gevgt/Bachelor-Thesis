@@ -1,5 +1,5 @@
 # Bachelor-Thesis
-Title: Analysis of Strategies of Robo Advisors based on the Example of Betterment [Python]
+Title: Analysis of Strategies of Robo Advisors based on the Example of Betterment
 
 The code includes:
   - Shrinkage of the covariance matrix
